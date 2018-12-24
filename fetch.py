@@ -12,18 +12,19 @@ def fetch_items(pocket, count=0):
 def get_data(items):
     """Get data from Pocket response"""
     data = {}
-    for k, v in items['list'].items():
+    for _, v in items['list'].items():
         title = v['given_title']
         url = v['given_url']
-        id = v['item_id']
-        if title == None or title == '':
+        item_id = v['item_id']
+        if title in (None, ''):
             print("MISSING TITLE: " + url)
             title = url
         try:
             tags = v['tags']
         except KeyError:
             print("MISSING TAGS: " + title)
-        data[id] = [title, url, tags]
+            tags = {'NA': {'item_id': item_id, 'tag': 'NA'}}
+        data[item_id] = [title, url, tags]
     return data
 
 
@@ -41,10 +42,8 @@ def list_entries(data_hash, typ):
 
 
 def get_tags(entry):
-    """Returns a simple list of tags for one entry"""
+    """Returns a simple string of tags for one entry"""
     tags = ""
     for tag, _ in entry[2].items():
         tags += " " + tag
     return tags
-
-
