@@ -22,10 +22,10 @@ def update_db(path, data_hash):
     """Create and fill a sqlite3 database"""
     con = create_db_con(path)
     con.execute('''CREATE VIRTUAL TABLE entries
-             USING FTS5(title, url, tags)''')
-    sql = '''INSERT INTO entries(title, url, tags) VALUES(?,?,?)'''
+             USING FTS5(title, url, tags, note)''')
+    sql = '''INSERT INTO entries(title, url, tags, note) VALUES(?,?,?,?)'''
     cur = con.cursor()
     for _, v in data_hash.items():
-        vals = (v[0], v[1], get_tags(v))
+        vals = (v[0], v[1], get_tags(v), v[3])
         cur.execute(sql, vals)
     con.commit()
