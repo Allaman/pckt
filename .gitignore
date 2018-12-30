@@ -116,5 +116,5 @@ dmypy.json
 
 # Database
 pckt.db
-# Fix credentials
-main.py
+# conf
+conf.yaml
