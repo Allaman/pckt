@@ -6,13 +6,21 @@ A CLI for [Pocket](https://getpocket.com/) following [12 Factor CLI APP](https:/
 
 For accessing your Pocket items you must obtain a free API access. [James Mackenzie](https://www.jamesfmackenzie.com/getting-started-with-the-pocket-developer-api/) provide an excellent guide.
 
-With your credentials create a file named 'conf.yaml' with the following content:
+With your credentials create a file named `conf.yaml` with the following content:
 
 ```yaml
 credentials:
   consumer_key: '<your-key>'
   access_token: '<your-token>'
 ```
+
+## Functionality
+
+1. Retrieve all Pocket entries from your account
+1. Store `url`, `title`, and `tags` in a local sqlite3 database
+1. Handle and mark missing fields (e.g. missing title)
+1. Print simple statistics about tags
+1. Filter and out stored entries as ascii table or parsable
 
 ## Commands
 
@@ -74,3 +82,11 @@ Options:
   --sort / --no-sort  sort by tag numbers
   --help              Show this message and exit.
 ```
+
+## Roadmap
+
+- [ ] Tests :wink:
+- [ ] Formalize structure according to python standards :cop:
+- [ ] PyPi upload :v:
+- [ ] Error handling :grin:
+- [ ] Single executable packaging :100:
