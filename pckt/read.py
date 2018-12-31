@@ -39,7 +39,7 @@ def get_tags_stats(col, sort):
         print(json.dumps(tags))
 
 
-def list_entries(path, width, col, count, parsable, terms):
+def list_entries(path, col, terms):
     """Filters and lists entries"""
     cur = get_cur(path)
     sql = ""
@@ -59,6 +59,11 @@ def list_entries(path, width, col, count, parsable, terms):
         else:
             print("Warning: col without search term not useful")
             sys.exit(1)
+    return result
+
+
+def view_entries(result, width, count, parsable):
+    """Print a filtered result of entries"""
     if parsable:
         print(result)
     else:

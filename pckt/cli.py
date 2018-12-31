@@ -1,7 +1,7 @@
 import click
 from db import clear_db, update_db
 from fetch import get_data, fetch_items, get_pocket
-from read import get_tags_stats, select_col, list_entries
+from read import get_tags_stats, select_col, list_entries, view_entries
 
 
 @click.group()
@@ -36,4 +36,4 @@ def tags(path, sort):
 @click.argument('keywords', nargs=-1)
 def filter(path, width, col, count, parsable, keywords):
     """Filter and list entries"""
-    list_entries(path, width, col, count, parsable, keywords)
+    view_entries(list_entries(path, col, keywords), width, count, parsable)
