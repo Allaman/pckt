@@ -1,12 +1,12 @@
 # PCKT
 
-A CLI for [Pocket](https://getpocket.com/) following [12 Factor CLI APP](https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46).
+A CLI for [Pocket](https://getpocket.com/) using [pocket-api](https://github.com/rakanalh/pocket-api) and influenced by [pocket-cli](https://github.com/rakanalh/pocket-cli) but more specific to my use case :wink:
 
 ## API and credentials
 
-For accessing your Pocket items you must obtain a free API access. [James Mackenzie](https://www.jamesfmackenzie.com/getting-started-with-the-pocket-developer-api/) provide an excellent guide.
+For accessing your Pocket items you must obtain a free API access. [James Mackenzie](https://www.jamesfmackenzie.com/getting-started-with-the-pocket-developer-api/) provides an excellent guide.
 
-With your credentials create a file named `conf.yaml` with the following content:
+With your credentials create a file named `conf.yaml` with the following content next to the `__main__.py`:
 
 ```yaml
 credentials:
@@ -20,7 +20,7 @@ credentials:
 1. Store `url`, `title`, and `tags` in a local sqlite3 database
 1. Handle and mark missing fields (e.g. missing title)
 1. Print simple statistics about tags
-1. Filter and out stored entries as ascii table or parsable
+1. Filter and output stored entries as ascii table or parsable
 
 ## Commands
 
@@ -55,15 +55,15 @@ Options:
 ### List and filter entries
 
 ```bash
-$ python main.py filter --help
-Usage: main.py filter [OPTIONS] [KEYWORDS]...
+python __main__.py filter --help
+Usage: __main__.py filter [OPTIONS] [KEYWORDS]...
 
   Filter and list entries
 
 Options:
   --path TEXT                 path to sqlite3 file
   --width INTEGER             column width of url and title
-  --col TEXT                  Which column to search
+  --col TEXT                  Which column (url, title, tags, note) to search
   --count / --no-count        Prints number of items
   --parsable / --no-parsable  Output no asci table
   --help                      Show this message and exit.
@@ -90,3 +90,4 @@ Options:
 - [ ] PyPi upload :v:
 - [ ] Error handling :grin:
 - [ ] Single executable packaging :100:
+- [ ] Implement two way operation
