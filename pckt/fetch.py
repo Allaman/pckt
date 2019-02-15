@@ -1,9 +1,17 @@
+"""
+
+fetch implements reading operations from the Pocket API
+
+"""
 from pocket import Pocket, PocketException
 import yaml
 
 
 def get_pocket():
-    """Create a Pocket object"""
+    """Create a Pocket object
+    Returns:
+        pocket object
+    """
     with open("conf.yaml", 'r') as stream:
         try:
             conf = yaml.safe_load(stream)
@@ -17,7 +25,13 @@ def get_pocket():
 
 
 def fetch_items(pocket, count=0):
-    """Get entries from pocket API"""
+    """Get entries from pocket API
+    Args:
+        pocket (Pocket): a pocket object
+        count (int): the numer of items to retrieve
+    Returns:
+        dictionary with fetched items
+    """
     try:
         return pocket.retrieve(count=count, detailType='complete', offset=0)
     except PocketException as exception:
@@ -25,12 +39,18 @@ def fetch_items(pocket, count=0):
 
 
 def get_data(items):
-    """Get data from Pocket response"""
+    """Get data from Pocket response
+        Args:
+            items (dict): the responce from the Pocket API
+        Returns:
+            data (dict): normalized raw data
+    """
     data = {}
     for _, v in items['list'].items():
         title = v['given_title']
         url = v['given_url']
         item_id = v['item_id']
+        created = v['time_added']
         note = ""
         if title in (None, ''):
             print("MISSING TITLE: " + url)
@@ -43,7 +63,7 @@ def get_data(items):
             print("MISSING TAGS: " + title)
             tags = {'NA': {'item_id': item_id, 'tag': 'NA'}}
             note = "Missing tags"
-        data[item_id] = [title, url, tags, note]
+        data[item_id] = [title, url, tags, created, note]
     return data
 
 
@@ -61,7 +81,12 @@ def get_data(items):
 
 
 def get_tags(entry):
-    """Returns a simple string of tags for one entry"""
+    """Returns a simple string of tags for one entry
+    Args:
+        entry (dict): tags
+    Returns:
+        string with all tags
+    """
     tags = ""
     for tag, _ in entry[2].items():
         tags += tag + " "

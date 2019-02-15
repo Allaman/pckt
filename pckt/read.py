@@ -6,7 +6,12 @@ from db import create_db_con
 
 
 def get_cur(path):
-    """Returns a cursor to the sqlite3 db"""
+    """Returns a cursor to the sqlite3 db
+    Args:
+        path (str): path to sqlite3 db
+    Returns:
+        cur (cursor)
+    """
     con = create_db_con(path)
     cur = con.cursor()
     return cur
@@ -14,10 +19,16 @@ def get_cur(path):
 
 def select_col(path, col):
     """Returns a given col
-    0 = titles
-    1 = urls
-    2 = tags
-    3 = note
+    Args:
+        path (str): path to sqlite3 db
+        col (int): column of database
+            0 = titles
+            1 = urls
+            2 = tags
+            3 = created
+            4 = note
+    Returns:
+        dict with results from query
     """
     con = create_db_con(path)
     con.row_factory = lambda cursor, row: row[col]
@@ -68,8 +79,9 @@ def view_entries(result, width, count, parsable):
         print(result)
     else:
         table = texttable.Texttable()
-        table.set_cols_width([width, width, 15, 15])
+        table.set_cols_width([width, width, 15, 10, 15])
         for row in result:
+            print(row)
             table.add_row(list(row))
         print(table.draw() + "\n")
     if count:
