@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 """
 
 fetch implements reading operations from the Pocket API
 
 """
-from pocket import Pocket, PocketException
 import yaml
+from pocket import Pocket, PocketException
 
 
 def get_pocket():
@@ -28,7 +29,7 @@ def fetch_items(pocket, count=0):
     """Get entries from pocket API
     Args:
         pocket (Pocket): a pocket object
-        count (int): the numer of items to retrieve
+        count (int): the numer of items to retrieve, default 0=all
     Returns:
         dictionary with fetched items
     """

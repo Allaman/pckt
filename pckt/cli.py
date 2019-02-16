@@ -1,3 +1,8 @@
+"""
+
+cli defines command line argument options for pckt application
+
+"""
 import click
 from db import clear_db, update_db
 from fetch import get_data, fetch_items, get_pocket

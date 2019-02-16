@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+
+db implements functionality to create a local sqlite3 database
+containing Pocket items from the fetch module
+
+"""
 import os
 import sqlite3
 from sqlite3 import Error
