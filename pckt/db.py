@@ -48,3 +48,4 @@ def update_db(path, data):
         vals = (v[0], v[1], get_tags(v), v[3], v[4])
         cur.execute(sql, vals)
     con.commit()
+    con.close()

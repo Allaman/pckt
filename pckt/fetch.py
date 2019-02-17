@@ -4,6 +4,7 @@
 fetch implements reading operations from the Pocket API
 
 """
+from datetime import datetime
 import yaml
 from pocket import Pocket, PocketException
 
@@ -51,7 +52,7 @@ def get_data(items):
         title = v['given_title']
         url = v['given_url']
         item_id = v['item_id']
-        created = v['time_added']
+        created = datetime.utcfromtimestamp(int(v['time_added']))
         note = ""
         if title in (None, ''):
             print("MISSING TITLE: " + url)
