@@ -34,7 +34,7 @@ def tags(path, sort):
 
 @main.command()
 @click.option('--path', default='pckt.db', help='path to sqlite3 file')
-@click.option('--width', default=90, help='column width of url and title')
+@click.option('--width', default=80, help='column width of url and title')
 @click.option('--col', default='complete', help='Which column to search')
 @click.option('--count/--no-count', default=False, help='Prints number of items')
 @click.option('--parsable/--no-parsable', default=False, help='Output no asci table')

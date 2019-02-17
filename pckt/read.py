@@ -105,7 +105,6 @@ def view_entries(entries, width, count, parsable):
         table = texttable.Texttable()
         table.set_cols_width([width, width, 15, 10, 15])
         for row in entries:
-            print(row)
             table.add_row(list(row))
         print(table.draw() + "\n")
     if count:
