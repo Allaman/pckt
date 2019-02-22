@@ -17,10 +17,14 @@ credentials:
 ## Functionality
 
 1. Retrieve all Pocket entries from your account
-1. Store `url`, `title`, and `tags` in a local sqlite3 database
+1. Store `url`, `title`, `tags`, and `time_added` in a local sqlite3 database
 1. Handle and mark missing fields (e.g. missing title)
 1. Print simple statistics about tags
 1. Filter and output stored entries as ascii table or parsable
+
+## Why
+
+Over the years the tags of my Pocket entries increased and need to be standardized. Therefore, the goal is to clean up Pocket entries, especially their tag, with the help of this tool. Of course the web frontend offers filtering by tag but in my opinion a CLI tool is more powerful.
 
 ## Commands
 
