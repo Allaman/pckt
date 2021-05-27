@@ -87,11 +87,3 @@ Options:
   --help              Show this message and exit.
 ```
 
-## Roadmap
-
-- [ ] Tests :wink:
-- [ ] Formalize structure according to python standards :cop:
-- [ ] PyPi upload :v:
-- [ ] Error handling :grin:
-- [ ] Single executable packaging :100:
-- [ ] Implement two way operation

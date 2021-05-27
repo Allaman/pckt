@@ -14,7 +14,7 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'Pckt'
 DESCRIPTION = 'CLI for Pocket'
-URL = 'https://repo.rootknecht.net/allaman/pckt'
+URL = 'https://github.com/allaman/pckt'
 EMAIL = 'allaman@rootknecht.net'
 AUTHOR = 'Michael Peter'
 REQUIRES_PYTHON = '>=3.6.5'
